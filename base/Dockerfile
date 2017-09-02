@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 
+# version 1.0
+
 # install some key tools like git and vi
 RUN apt-get update
 RUN apt-get install -y git vim curl
@@ -30,27 +32,26 @@ RUN pip3 install \
 WORKDIR /root
 RUN git clone https://github.com/tensorflow/tensorflow
 
-# this is how I built the CPU version of tensorflow
-
+# build the CPU version of tensorflow with SSE support
 WORKDIR /root/tensorflow
 RUN echo "/usr/bin/python3" | ./configure
 RUN bazel build --config=opt --local_resources 2048,.5,1.0 //tensorflow/tools/pip_package:build_pip_package
 RUN bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-RUN pip3 install /tmp/tensorflow_pkg/tensorflow-1.3.0-py2-none-any.whl
+RUN pip3 install /tmp/tensorflow_pkg/tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl
 
 
 # setup SSHD
-RUN apt-get install -y openssh-server
+# RUN apt-get install -y openssh-server
 
-RUN mkdir /var/run/sshd
-RUN echo 'root:qwerty' | chpasswd
-RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+# RUN mkdir /var/run/sshd
+# RUN echo 'root:qwerty' | chpasswd
+# RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # SSH login fix. Otherwise user is kicked off after login
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+# RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
-ENV NOTVISIBLE "in users profile"
-RUN echo "export VISIBLE=now" >> /etc/profile
+# ENV NOTVISIBLE "in users profile"
+# RUN echo "export VISIBLE=now" >> /etc/profile
 
-EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+# EXPOSE 22
+# CMD ["/usr/sbin/sshd", "-D"]
