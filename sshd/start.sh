@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker start -it tfssh
+docker start tfssh

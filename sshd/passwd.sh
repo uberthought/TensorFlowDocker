@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo docker exec -it tfssh passwd
+docker exec -it tfssh passwd

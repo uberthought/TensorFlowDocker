@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t tensorssh .
+docker build -t tfssh .
