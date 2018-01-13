@@ -15,9 +15,10 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-RUN echo "export LC_ALL=C" >> /root/.bashrc
+RUN apt-get install -y git python3-tk vim
 
-RUN apt-get install -y git python3-tk
+RUN echo "export LC_ALL=C" >> /root/.bashrc
+RUN echo "X11UseLocalhost no" >> /etc/ssh/sshd_config
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
