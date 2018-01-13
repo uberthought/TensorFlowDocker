@@ -19,6 +19,7 @@ RUN apt-get install -y git python3-tk vim
 
 RUN echo "export LC_ALL=C" >> /root/.bashrc
 RUN echo "X11UseLocalhost no" >> /etc/ssh/sshd_config
+RUN git config --global credential.helper cache
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
