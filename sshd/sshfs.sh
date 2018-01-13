@@ -1,4 +1,5 @@
 #!/bin/bash
 
-sshfs root@35.202.235.6:. -p 2222 ~/foo
+source data
 
+sshfs root@${ADDRESS}:. -p 2222 ~/foo

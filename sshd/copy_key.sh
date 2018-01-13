@@ -1,4 +1,6 @@
 #!/bin/bash
 
-ssh-copy-id root@35.202.235.6 -p 2222
+source data
+
+ssh-copy-id root@${ADDRESS} -p 2222
 
