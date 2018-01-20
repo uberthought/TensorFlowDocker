@@ -40,6 +40,8 @@ CMD ["/usr/sbin/sshd", "-D"]
 
 # setup Pillow
 
+RUN apt-get install -y imagemagick
+
 RUN pip3 install \
   numpy \
   pillow
