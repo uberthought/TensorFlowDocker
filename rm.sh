@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker stop tfssh
-docker rm tfssh
+docker stop tf
+docker rm tf

@@ -1,26 +1,37 @@
-FROM python:3.6
-MAINTAINER Josip Janzic <josip.janzic@gmail.com>
+FROM ubuntu:artful
 
-RUN apt-get update && \
-        apt-get install -y \
-        build-essential \
-        cmake \
-        git \
-        wget \
-        unzip \
-        yasm \
-        pkg-config \
-        libswscale-dev \
-        libtbb2 \
-        libtbb-dev \
-        libjpeg-dev \
-        libpng-dev \
-        libtiff-dev \
-        libjasper-dev \
-        libavformat-dev \
-        libpq-dev
 
-RUN pip install numpy
+RUN apt-get update
+RUN apt-get upgrade -y
+
+RUN apt-get install -y \
+  python3.6 \
+  python3.6-dev \
+  python3-pip \
+  software-properties-common
+
+RUN add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+RUN apt-get update
+
+RUN apt-get install -y \
+  build-essential \
+  cmake \
+  git \
+  wget \
+  unzip \
+  yasm \
+  pkg-config \
+  libswscale-dev \
+  libtbb2 \
+  libtbb-dev \
+  libjpeg-dev \
+  libpng-dev \
+  libtiff-dev \
+  libjasper-dev \
+  libavformat-dev \
+  libpq-dev
+
+RUN pip3 install numpy
 
 WORKDIR /
 ENV OPENCV_VERSION="3.4.0"
@@ -48,5 +59,6 @@ RUN cd /opencv-${OPENCV_VERSION}/cmake_binary \
     -DPYTHON_INCLUDE_DIR=$(python3.6 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
     -DPYTHON_PACKAGES_PATH=$(python3.6 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") .. \
   && make install
-# && rm /${OPENCV_VERSION}.zip \
-# && rm -r /opencv-${OPENCV_VERSION}
+
+RUN rm /${OPENCV_VERSION}.zip \
+    rm -r /opencv-${OPENCV_VERSION}

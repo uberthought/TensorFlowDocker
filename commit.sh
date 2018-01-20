@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker commit tfssh uberthought/tensorflowcpussh
+docker commit tf uberthought/tensorflowcpussh
 docker push uberthought/tensorflowcpussh

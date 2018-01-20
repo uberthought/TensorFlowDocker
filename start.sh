@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker start tfssh
+docker start tf

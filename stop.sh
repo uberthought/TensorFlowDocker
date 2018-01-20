@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker stop tfssh
+docker stop tf

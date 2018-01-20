@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t tfssh .
+docker build -t tensorflow .

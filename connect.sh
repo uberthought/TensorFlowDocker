@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker exec -it tfssh bash
+docker exec -it tf bash
