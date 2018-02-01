@@ -2,5 +2,5 @@
 
 source data
 
-ssh-copy-id root@${ADDRESS} -p 2222
+ssh-copy-id tf@${ADDRESS} -p 2222
 

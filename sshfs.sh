@@ -2,4 +2,4 @@
 
 source data
 
-sshfs root@${ADDRESS}:. -p 2222 ~/foo
+sshfs tf@${ADDRESS}:. -p 2222 ~/foo
