@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ssh -Y root@localhost -p 2222
+ssh -Y tf@localhost -p 2222
