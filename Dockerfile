@@ -20,7 +20,7 @@ RUN pip3 install tensorflow
 
 RUN apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
-RUN useradd --create-home tf
+RUN useradd --create-home --shell /bin/bash tf
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
