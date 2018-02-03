@@ -35,3 +35,7 @@ RUN pip3 install \
 # setup matplotlib
 
 RUN apt-get install -y python3-matplotlib
+
+# ffmpeg
+
+RUN apt-get install -y ffmpeg
