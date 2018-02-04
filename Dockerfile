@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 # basic setup
 
-RUN apt-get update
+RUN apt-get update --fix-missing
 RUN apt-get upgrade -y
 
 RUN apt-get install -y git vim
@@ -39,3 +39,10 @@ RUN apt-get install -y python3-matplotlib
 # ffmpeg
 
 RUN apt-get install -y ffmpeg
+
+# av
+
+RUN apt-get install pkg-config \
+  libavformat-dev libavcodec-dev libavdevice-dev \
+  libavutil-dev libswscale-dev libavresample-dev
+RUN pip3 install av
