@@ -2,5 +2,5 @@
 
 source data
 
-ssh -Y tf@${ADDRESS} -p 2222
+ssh -YC tf@${ADDRESS} -p 2222
 

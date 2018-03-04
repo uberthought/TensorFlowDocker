@@ -13,6 +13,7 @@ RUN apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 RUN useradd --create-home --shell /bin/bash tf
 RUN echo "export LC_ALL=C" >> /home/tf/.bashrc
+RUN echo "X11UseLocalhost no" >> /etc/ssh/sshd_config
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
