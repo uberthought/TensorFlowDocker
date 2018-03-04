@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 export ADDRESS=localhost
+=======
+export ADDRESS=35.227.73.246
+>>>>>>> 86811b9602d262e86b626a7646a185f0e8b5665e

@@ -1,0 +1,33 @@
+# FROM nvidia/cuda:latest
+FROM gcr.io/tensorflow/tensorflow:latest-gpu-py3
+
+# basic setup
+
+RUN apt-get update
+
+RUN apt-get install -y git vim
+
+# setup sshd
+
+RUN apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
+RUN useradd --create-home --shell /bin/bash tf
+RUN echo "export LC_ALL=C" >> /home/tf/.bashrc
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
+
+# setup Pillow
+
+RUN apt-get install -y imagemagick
+
+RUN pip3 install \
+  numpy \
+  pillow
+
+# setup matplotlib
+
+RUN apt-get install -y python3-matplotlib
+
+# ffmpeg
+
+RUN apt-get install -y ffmpeg
