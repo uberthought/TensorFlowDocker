@@ -1,20 +1,11 @@
-FROM ubuntu:latest
+FROM gcr.io/tensorflow/tensorflow:1.5.0-py3
+#FROM gcr.io/tensorflow/tensorflow:latest-py3
 
 # basic setup
 
-RUN apt-get update --fix-missing
-RUN apt-get upgrade -y
+RUN apt-get update
 
 RUN apt-get install -y git vim
-
-# install python3
-
-RUN apt-get install -y python3-pip python3-dev python3-tk
-RUN pip3 install --upgrade pip
-
-# install tensorflow
-
-RUN pip3 install tensorflow
 
 # setup sshd
 
@@ -41,9 +32,12 @@ RUN apt-get install -y python3-matplotlib
 
 RUN apt-get install -y ffmpeg
 
-# av
+# ms code
 
-RUN apt-get install pkg-config \
-  libavformat-dev libavcodec-dev libavdevice-dev \
-  libavutil-dev libswscale-dev libavresample-dev
-RUN pip3 install av
+RUN apt-get install -y \
+	curl apt-transport-https \
+	libgtk2.0-bin xterm
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg
+RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+RUN apt-get update
+RUN apt-get install -y code

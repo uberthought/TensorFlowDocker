@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t tensorflow . --file Dockerfile.nvidia
+docker build -t tensorflow . --file Dockerfile
