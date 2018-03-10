@@ -1,5 +1,5 @@
-FROM gcr.io/tensorflow/tensorflow:1.5.0-py3
-#FROM gcr.io/tensorflow/tensorflow:latest-py3
+#FROM gcr.io/tensorflow/tensorflow:1.5.0-py3
+FROM gcr.io/tensorflow/tensorflow:latest-py3
 
 # basic setup
 
@@ -32,13 +32,3 @@ RUN apt-get install -y python3-matplotlib
 # ffmpeg
 
 RUN apt-get install -y ffmpeg
-
-# ms code
-
-RUN apt-get install -y \
-	curl apt-transport-https \
-	libgtk2.0-bin xterm
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg
-RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-RUN apt-get update
-RUN apt-get install -y code
