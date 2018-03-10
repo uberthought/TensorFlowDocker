@@ -38,4 +38,3 @@ RUN apt-get install -y ffmpeg
 # flask
 RUN pip3 install Flask
 EXPOSE 5000
-
